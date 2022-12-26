@@ -36,16 +36,16 @@ CREATE TABLE IF NOT EXISTS `board` (
 -- Dumping data for table domino.board: ~0 rows (approximately)
 
 -- Dumping structure for procedure domino.clean_board
-DELIMITER //
+DELIMITER $$
 CREATE PROCEDURE `clean_board`()
 BEGIN
 REPLACE INTO board SELECT * FROM board_empty;
-END//
+END $$
 DELIMITER ;
 
 -- Dumping structure for πίνακας domino.game_status
 CREATE TABLE IF NOT EXISTS `game_status` (
-  `status` enum('not active','initialized','started','\r\nended','aborded') NOT NULL DEFAULT 'not active',
+  `status` enum('not active','initialized','started','ended','aborded') NOT NULL DEFAULT 'not active',
   `last_change` timestamp NULL DEFAULT NULL,
   `result` enum('1','2','3','4','D') DEFAULT NULL,
   `p_turn` enum('1','2','3','4') DEFAULT NULL
@@ -97,12 +97,12 @@ INSERT INTO `tiles` (`numTiles`) VALUES
 
 -- Dumping structure for trigger domino.game_status_update
 SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO';
-DELIMITER //
+DELIMITER $$
 CREATE TRIGGER game_status_update BEFORE UPDATE
 ON game_status
 FOR EACH ROW BEGIN
 SET NEW.last_change = NOW();
-END//
+END$$
 DELIMITER ;
 SET SQL_MODE=@OLDTMP_SQL_MODE;
 
