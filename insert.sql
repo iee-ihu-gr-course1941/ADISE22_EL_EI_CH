@@ -81,12 +81,12 @@ INSERT INTO `tiles` (`numTiles`) VALUES
 
 -- Dumping structure for trigger domino.game_status_update
 SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO';
-DELIMITER //
+DELIMITER $$
 CREATE TRIGGER game_status_update BEFORE UPDATE
 ON game_status
 FOR EACH ROW BEGIN
 SET NEW.last_change = NOW();
-END//
+END$$
 DELIMITER ;
 SET SQL_MODE=@OLDTMP_SQL_MODE;
 
