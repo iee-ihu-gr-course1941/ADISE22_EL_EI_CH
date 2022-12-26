@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `active_players` (
 
 -- Dumping structure for πίνακας domino.game_status
 CREATE TABLE IF NOT EXISTS `game_status` (
-  `status` enum('not active','initialized','started','\r\nended','aborded') NOT NULL DEFAULT 'not active',
+  `status` enum('not active','initialized','started','ended','aborded') NOT NULL DEFAULT 'not active',
   `last_change` timestamp NULL DEFAULT NULL,
   `result` enum('1','2','3','4','D') DEFAULT NULL,
   `p_turn` enum('1','2','3','4') DEFAULT NULL
