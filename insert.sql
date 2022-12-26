@@ -30,7 +30,9 @@ CREATE TABLE IF NOT EXISTS `active_players` (
 -- Dumping structure for πίνακας domino.game_status
 CREATE TABLE IF NOT EXISTS `game_status` (
   `status` enum('not active','initialized','started','\r\nended','aborded') NOT NULL DEFAULT 'not active',
-  `last_change` timestamp NULL DEFAULT NULL
+  `last_change` timestamp NULL DEFAULT NULL,
+  `result` enum('1','2','3','4','D') DEFAULT NULL,
+  `p_turn` enum('1','2','3','4') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table domino.game_status: ~0 rows (approximately)
@@ -46,10 +48,10 @@ CREATE TABLE IF NOT EXISTS `players` (
 
 -- Dumping data for table domino.players: ~4 rows (approximately)
 INSERT INTO `players` (`id`, `username`, `password`) VALUES
-	(161111, 'maria', '333333'),
-	(181111, 'eleni', '444444'),
-	(185421, 'eirini', '222222'),
-	(185445, 'elisabet', '111111');
+	(1, 'user1', '333333'),
+	(2, 'user2', '444444'),
+	(3, 'user3', '222222'),
+	(4, 'user4', '111111');
 
 -- Dumping structure for πίνακας domino.state
 CREATE TABLE IF NOT EXISTS `state` (
