@@ -14,3 +14,4 @@ echo json_encode($json_output);
 
 session_write_close();
 exit;
+?>

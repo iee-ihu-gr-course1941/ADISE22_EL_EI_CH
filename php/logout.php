@@ -22,5 +22,3 @@ session_write_close();
 header("Location:../login.html");
 exit;
 ?>
-Footer
-© 2022 GitH

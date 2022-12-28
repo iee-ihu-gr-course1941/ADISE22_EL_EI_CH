@@ -56,3 +56,4 @@ if ($connected) {
     //print_r($login_row);
 }
 exit;
+?>

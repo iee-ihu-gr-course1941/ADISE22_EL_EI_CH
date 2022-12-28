@@ -19,3 +19,4 @@
 		echo "Database obj is empty.";
 		exit;
 	}
+	?>
