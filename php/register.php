@@ -1,5 +1,5 @@
 <?php
-require "dbconnect.php";
+require "connection_with_db.php";
 
 $post_username = htmlspecialchars($_POST['uname']);
 $post_password = htmlspecialchars($_POST['pass']);
@@ -11,7 +11,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 		session_start();
 }
 if ($statement !== false ) {
-	$_SESSION['registerMessage'] = 'Success!';
+	$_SESSION['registerMessage'] = 'Επιτυχής εγγραφή!';
 	$_SESSION['status'] = 1;
 	
 	include 'login.php';
@@ -19,9 +19,9 @@ if ($statement !== false ) {
 else {
 	//error
 	$_SESSION['status'] = 2;
-	$_SESSION['registerMessage'] = 'Connection error.';
+	$_SESSION['registerMessage'] = 'Πρόβλημα σύνδεσης';
 	$_SESSION['user'] = -1;
-	header('Location:/ADISE2020_Dominoes/register.html');
+	header('Location:: ../register_user.html');                                         // na to doume to path
 	
 	session_write_close();
 	exit;

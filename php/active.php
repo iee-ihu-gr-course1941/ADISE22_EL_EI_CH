@@ -1,6 +1,6 @@
 <?php
 	if(!isset($connected)||$connected == false){
-            require "dbconnect.php";
+            require "connection_with_db.php";
     }
 
 	if (session_status() !== PHP_SESSION_ACTIVE) {

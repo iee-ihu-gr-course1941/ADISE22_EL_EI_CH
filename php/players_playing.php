@@ -1,8 +1,8 @@
 <?php
 
-require "dbconnect.php";
-require 'domino-function-library.php';
-require 'state-sql.php';
+require "connection_with_db.php";
+require 'libraries.php';
+require 'state-of_db.php';
 
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
@@ -53,18 +53,18 @@ if (check_active_game() == false) {
                         $_SESSION['gameID'] = $game_row['gameID'];
                     }
                 } elseif ($game_check->num_rows == 0) {
-                    $_SESSION['loginMessage'] = 'Game has not been set.';
+                    $_SESSION['loginMessage'] = 'Το παιχνίδι δεν έχει οριστεί.';
                 } else {
-                    $_SESSION['loginMessage'] = 'Connection error.';
+                    $_SESSION['loginMessage'] = 'Πρόβλημα σύνδεσης.';
                 }
             } else {
                 echo $dbcon->error;
             }
         }
     } elseif ($activeP_numrows == 0) {
-        $_SESSION['loginMessage'] = 'Not enought players online.';
+        $_SESSION['loginMessage'] = 'Δεν υπαρχουν αρκετοί παίχτες διαθέσιμοι.';
     } else {
-        $_SESSION['loginMessage'] = 'Connection error.';
+        $_SESSION['loginMessage'] = 'Πρόβλημα σύνδεσης.';
     }
 }
 
@@ -72,7 +72,7 @@ session_write_close();
 
 if (empty($_SESSION['gameID'])) {
     //header('Location:start.php');
-    header('Location: ../waiting.html');
+    header('Location: ../wait_the_other_player.html');
 } else {
     header('Location:../api.html');
 }

@@ -4,7 +4,7 @@
  * In this page the user gets authenticated by the system.
  */
 if (!isset($connected) || $connected == false) {
-    require "dbconnect.php";
+    require "connection_with_db.php";
 }
 //$connected = true;
 if ($connected) {
@@ -35,7 +35,7 @@ if ($connected) {
             $_SESSION['status'] = 1;
             $_SESSION['user'] = $login_row['username'];
             $_SESSION['player1'] = $login_row['username'];
-            $_SESSION['loginMessage'] = 'Hello ' . $post_username . '! Welcome to dominoes game.';
+            $_SESSION['loginMessage'] = 'HELLO! ' . $post_username . = ' Καλως ηρθατε στο παιχνίδι!';
             //adds user to the list of active players
             $_SESSION['player1'] = $login_row['username'];
             $query = "INSERT INTO Active_players (username) VALUES ('$login_row[username]')";
@@ -43,11 +43,11 @@ if ($connected) {
         }
     } elseif ($login_numrows == 0) {
         $_SESSION['status'] = 0;
-        $_SESSION['loginMessage'] = 'User not found.';
+        $_SESSION['loginMessage'] = 'Δεν βρέθηκε χρήστης';
         $_SESSION['user'] = -1;
     } else {
         $_SESSION['status'] = 2;
-        $_SESSION['loginMessage'] = 'Connection error.';
+        $_SESSION['loginMessage'] = 'Πρόβλημα σύνδεσης';
         $_SESSION['user'] = -1;
     }
     session_write_close();

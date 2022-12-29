@@ -1,7 +1,7 @@
 <?php
-require "dbconnect.php";
-require "domino-function-library.php";
-require "state-sql.php";
+require "connection_with_db.php";
+require "libraries.php";
+require "state-of_db.php";
 
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();

@@ -1,10 +1,10 @@
 <?php
 	$host = 'localhost';
-	$user = 'root';
+	$user = 'it185421@users.it.teithe.gr';
         //$user = 'user';
 	$pass = '';
-	$database = 'dominoes';
-	$port = '3306';
+	$database = 'domino';
+	$port = '22';                                                                         //3306
 	
 	$dbcon = new mysqli($host,$user,$pass,$database,$port);
 	$connected = false;
@@ -16,7 +16,7 @@
 		echo $dbcon->errno.' '.$dbcon->error;
 	}
 	else {
-		echo "Database obj is empty.";
+		echo "Database is empty.";
 		exit;
 	}
 	?>

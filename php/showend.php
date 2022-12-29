@@ -5,14 +5,14 @@
 	}
 	if (isset($_SESSION['status'])) {
 		
-		include "reactivate.php"; 
+		include "active.php"; 
 		
 		if ($_SESSION['status'] == 3) {
 		echo $_SESSION['EndMessage'];
 		
 		?>
-			<form action="../waiting.html" method="POST">					
-				<label for="newgame"><button class="button2">Start again</button></label><br/>
+			<form action="../wait_the_other_player.html" method="POST">					
+				<label for="newgame"><button class="button2">Επανέναρξη</button></label><br/>
 				<input type="submit" name="newgame" style="display:none">
 			</form>
 		<?php

@@ -6,8 +6,8 @@ if (isset($_SESSION['status'])) {
     if ($_SESSION['status'] == 1) {
         echo $_SESSION['loginMessage'];
         ?>
-        <form action="active_players.php" method="POST">					
-            <label for="newgame"><button class="button2">new game</button></label><br/>
+        <form action="players_playing.php" method="POST">					
+            <label for="newgame"><button class="button2">Νέο παιχνίδι</button></label><br/>
             <input type="submit" name="newgame" style="display:none">
         </form>
         <?php
@@ -15,7 +15,7 @@ if (isset($_SESSION['status'])) {
     } elseif ($_SESSION['status'] == 0) {
         echo $_SESSION['loginMessage'];
         ?>
-        <a href="/register.html">Register to dominoes.</a>
+        <a href="/register.html"> Εγγραφή στο παιχνίδι</a>
         <?php
     }
     exit;

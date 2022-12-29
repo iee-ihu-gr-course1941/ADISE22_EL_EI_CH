@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+	<!-- #BeginTemplate "dominoes_test_layout.dwt" -->
+	<head>
+		<!-- #BeginEditable "doctitle" -->
+		<title>Κλασσικό Ντόμινο</title>
+		<link rel="stylesheet" href="css.css"/>
+		<script>
+            var dots = 0;
+            function check_active_players() {
+                var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var json_response = JSON.parse(this.responseText);
+                        if (json_response == null || json_response.goto_url == undefined) {
+                            var dots_text = document.getElementById('wait_dots');
+                            if (dots < 5) {
+                                dots_text.innerText += '.';
+                                dots++;
+                            }
+                            else {
+                                dots_text.innerText = '.';
+                                dots=0;
+                            }
+                        }
+                        else if (json_response.goto_url !== undefined && json_response.goto_url !== null) {
+                            console.log(this.responseText);
+                            window.location = json_response.goto_url;
+                        }
+                    }
+                };
+                xhttp.open("GET", "php/lobby.php", true);
+				xhttp.send();
+            }
+            window.onload = function() {
+                setInterval(check_active_players, 500);
+                //check_active_players();
+            };
+        </script>
+		<!-- #EndEditable -->
+	</head>
+	<body>
+		<div id="main">
+			<div id="head">
+				<h1 style="text-align:center;">Κλασσικό Ντόμινο</h1>
+			</div>
+			<div id="board">
+				<!--here will be the board game -->
+				<!-- #BeginEditable "body" -->
+				<div id="game">
+					<div id="iner_game">
+						<div id="wait_effect"><p style="text-align:center;">Περίμενε τον αντίπαλο να κάνει την κίνησή του!</p><span id="wait_dots"></span></div>
+					</div>
+				</div>
+				<!-- #EndEditable -->
+			</div>
+		</div>
+	</body>
+<!-- #EndTemplate -->
+</html>

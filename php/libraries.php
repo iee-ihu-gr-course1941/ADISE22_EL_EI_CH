@@ -3,7 +3,7 @@
    //creating an assosiative array 
     function deck(){
         if(!isset($connected)||$connected == false){
-            require "dbconnect.php";
+            require "connection_with_db.php";
         }
         //request the number series 0-6 from the databace
         
@@ -288,7 +288,7 @@
         if(isHandEmpty($player1Hand)){
 			$_SESSION['status'] = 3;
 			$_SESSION['win'] = $state["players"][0]["id"];
-			$_SESSION['EndMessage'] = "The Game is over! ". $state["players"][0]["id"] . " won!";
+			$_SESSION['EndMessage'] = "Τέλος παιχνιδιού! ". $state["players"][0]["id"] . " Συγχαρητήρια! Είσαι ο νικητής! ";
             //maybe freeze all html elements so he cant make any more moves?
             $state["end"] = TRUE;
 			return true;
@@ -296,7 +296,7 @@
 		elseif(isHandEmpty($player2Hand)){
 			$_SESSION['status'] = 3;
 			$_SESSION['win'] = $state["players"][1]["id"];
-			$_SESSION['EndMessage'] = "The Game is over! ". $state["players"][1]["id"] . " won!";
+			$_SESSION['EndMessage'] = "Τέλος παιχνιδιού! ". $state["players"][1]["id"] . " Συγχαρητήρια! Είσαι ο νικητής! ";
             //maybe freeze all html elements so he cant make any more moves?
             $state["end"] = TRUE;
 			return true;
@@ -307,10 +307,10 @@
                $state["end"] = TRUE;
 			   $_SESSION['status'] = 3;
 			   $_SESSION['win'] = $state["players"][$winPlayerIndex]["id"];
-			   $_SESSION['EndMessage'] = "The Game is over! ". $state["players"][$winPlayerIndex]["id"] . " won!";
+			   $_SESSION['EndMessage'] = "Τέλος παιχνιδιού! ". $state["players"][$winPlayerIndex]["id"] . " Συγχαρητήρια! Είσαι ο νικητής! ";
 			   return true;
             }else{
-               $_SESSION['EndMessage'] = "its a draw.";
+               $_SESSION['EndMessage'] = "Ισοπαλία";
             }
         }
 		return false;
