@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html dir="ltr">
-    <!-- #BeginTemplate "dominoes_test_layout.dwt" -->
     <head>
-        <!-- #BeginEditable "doctitle" -->
         <title>Domino</title>
         <link rel="stylesheet" href="css.css"/>
         <style>
 
 
             #iner_api{
-                top:6%;
-                left:2%;
-                width:96%;
-                height:65%;
+                top:0%;
+                left:0%;
+                width:100%;
+                height:65%;       
                 text-align:center;
                 border-color:gray;
                 border-style:solid;
-                border-width:2px;
+                border-width:6px;
                 position:absolute;
-                background-image:url('file:///C:/Users/eliss/Downloads/316738759_558430542965646_2965742561918699925_n.jpg');
+                background-image:url('ΜΠΟΡΝΤΟ.jpg')
 
             }
             #iner_hand{
-                top:70%;
-                left:2%;
-                width:96%;
-                height:20%;
+                top:65.5%;
+                left:0%;
+                width:100%;
+                height:34%;
                 text-align:center;
-                border-color:white;
+                border-color:gray;
                 border-style:solid;
-                border-width:2px;
+                border-width:6px;
                 position:absolute;
-                background-image:url('file:///C:/Users/eliss/Downloads/308410071_775608640401899_5709462257502245871_n.jpg');
+                background-image:url('308410071_775608640401899_5709462257502245871_n.jpg')
             }
             #iner_form{
-                top:70%;
+                top:102%;
                 left:2%;
                 width:96%;
+                color: beige;
                 position:absolute;
             }
+
         </style>
         <script type="text/javascript">
 		 //var xhttp = new XMLHttpRequest();
@@ -206,22 +206,21 @@
        
     </head>
     <body onload="start()">
-        <div id="main">
+        <div id="main" style="background-image: url('ΜΠΟΡΝΤΟ.jpg');">
             <div id="head">
                 <h1 style="text-align:center;">Domino</h1>
             </div>
             <div id="board">
-                <!--here will be the board game -->
                 
                 <div id="game">
                    
-                    <div id="iner_api" style="left: 2%; top: 7%">
+                    <div id="iner_api">
                         <span id="board_list"></span>
                     </div>
-                    <div id="iner_hand" style="left: 2%; top: 74%">
+                    <div id="iner_hand" >
                         <span id="players_hand"></span>
                     </div>
-                    <div id="iner_form" style="left: 2%; top: 97%; height: 200px">
+                    <div id="iner_form">
                         <form onsubmit="play_api()" method="post">
                             <label for="selected_front">Front (Left):</label>
                             <input type="text" name="selected_front" id="selected_front" placeholder="enter a number"><br/><br/>
@@ -247,5 +246,4 @@
         
         </div>
     </body>
-    <!-- #EndTemplate -->
 </html>
