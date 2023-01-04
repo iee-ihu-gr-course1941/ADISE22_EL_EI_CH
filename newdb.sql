@@ -30,22 +30,80 @@ CREATE TABLE IF NOT EXISTS `active_players` (
 -- Dumping structure for πίνακας domino.board
 CREATE TABLE IF NOT EXISTS `board` (
   `tile` varchar(10) DEFAULT NULL,
+  `tile` enum('00','01','02','03','04','05','06','11','12','13','14','15','16','22','23','24','25','26','33','34','35','36','44,','45','46','55','56','66') DEFAULT NULL,
   `last_change` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table domino.board: ~0 rows (approximately)
+-- Dumping data for table domino.board: ~56 rows (approximately)
+INSERT INTO `board` (`tile`, `last_change`) VALUES
+	('1', '2023-01-04 17:22:28'),
+	('2', '2023-01-04 17:22:28'),
+	('3', '2023-01-04 17:22:28'),
+	('4', '2023-01-04 17:22:28'),
+	('5', '2023-01-04 17:22:28'),
+	('6', '2023-01-04 17:22:28'),
+	('7', '2023-01-04 17:22:28'),
+	('8', '2023-01-04 17:22:28'),
+	('9', '2023-01-04 17:22:28'),
+	('10', '2023-01-04 17:22:28'),
+	('11', '2023-01-04 17:22:28'),
+	('12', '2023-01-04 17:22:28'),
+	('13', '2023-01-04 17:22:28'),
+	('14', '2023-01-04 17:22:28'),
+	('15', '2023-01-04 17:22:28'),
+	('16', '2023-01-04 17:22:28'),
+	('17', '2023-01-04 17:22:28'),
+	('18', '2023-01-04 17:22:28'),
+	('19', '2023-01-04 17:22:28'),
+	('20', '2023-01-04 17:22:28'),
+	('21', '2023-01-04 17:22:28'),
+	('22', '2023-01-04 17:22:28'),
+	('23', '2023-01-04 17:22:28'),
+	('24', '2023-01-04 17:22:28'),
+	('25', '2023-01-04 17:22:28'),
+	('26', '2023-01-04 17:22:28'),
+	('27', '2023-01-04 17:22:28'),
+	('28', '2023-01-04 17:22:28'),
+	('1', '2023-01-04 17:22:29'),
+	('2', '2023-01-04 17:22:29'),
+	('3', '2023-01-04 17:22:29'),
+	('4', '2023-01-04 17:22:29'),
+	('5', '2023-01-04 17:22:29'),
+	('6', '2023-01-04 17:22:29'),
+	('7', '2023-01-04 17:22:29'),
+	('8', '2023-01-04 17:22:29'),
+	('9', '2023-01-04 17:22:29'),
+	('10', '2023-01-04 17:22:29'),
+	('11', '2023-01-04 17:22:29'),
+	('12', '2023-01-04 17:22:29'),
+	('13', '2023-01-04 17:22:29'),
+	('14', '2023-01-04 17:22:29'),
+	('15', '2023-01-04 17:22:29'),
+	('16', '2023-01-04 17:22:29'),
+	('17', '2023-01-04 17:22:29'),
+	('18', '2023-01-04 17:22:29'),
+	('19', '2023-01-04 17:22:29'),
+	('20', '2023-01-04 17:22:29'),
+	('21', '2023-01-04 17:22:29'),
+	('22', '2023-01-04 17:22:29'),
+	('23', '2023-01-04 17:22:29'),
+	('24', '2023-01-04 17:22:29'),
+	('25', '2023-01-04 17:22:29'),
+	('26', '2023-01-04 17:22:29'),
+	('27', '2023-01-04 17:22:29'),
+	('28', '2023-01-04 17:22:29');
 
 -- Dumping structure for procedure domino.clean_board
-DELIMITER $$
+DELIMITER //
 CREATE PROCEDURE `clean_board`()
 BEGIN
 REPLACE INTO board SELECT * FROM board_empty;
-END $$
+END//
 DELIMITER ;
 
 -- Dumping structure for πίνακας domino.game_status
 CREATE TABLE IF NOT EXISTS `game_status` (
-  `status` enum('not active','initialized','started','ended','aborded') NOT NULL DEFAULT 'not active',
+  `status` enum('not active','initialized','started','\r\nended','aborded') NOT NULL DEFAULT 'not active',
   `last_change` timestamp NULL DEFAULT NULL,
   `result` enum('1','2','3','4','D') DEFAULT NULL,
   `p_turn` enum('1','2','3','4') DEFAULT NULL
@@ -97,12 +155,12 @@ INSERT INTO `tiles` (`numTiles`) VALUES
 
 -- Dumping structure for trigger domino.game_status_update
 SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO';
-DELIMITER $$
+DELIMITER //
 CREATE TRIGGER game_status_update BEFORE UPDATE
 ON game_status
 FOR EACH ROW BEGIN
 SET NEW.last_change = NOW();
-END$$
+END//
 DELIMITER ;
 SET SQL_MODE=@OLDTMP_SQL_MODE;
 
