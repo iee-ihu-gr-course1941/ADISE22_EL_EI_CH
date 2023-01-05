@@ -8,7 +8,7 @@
 
 
             #iner_api{
-                top:0%;
+                top: 0%;
                 left:0%;
                 width:100%;
                 height:65%;       
@@ -17,26 +17,27 @@
                 border-style:solid;
                 border-width:6px;
                 position:absolute;
-                background-image:url('ΜΠΟΡΝΤΟ.jpg')
+                background-image:url('../images/ΜΠΟΡΝΤΟ.jpg')
+
 
             }
             #iner_hand{
                 top:65.5%;
                 left:0%;
                 width:100%;
-                height:34%;
+                height:25%;
                 text-align:center;
                 border-color:gray;
                 border-style:solid;
                 border-width:6px;
                 position:absolute;
-                background-image:url('308410071_775608640401899_5709462257502245871_n.jpg')
+                background-image:url('../images/316086509_621969573014824_7393312469914654232_n.jpg')
             }
             #iner_form{
-                top:102%;
+                top:94%;
                 left:2%;
                 width:96%;
-                color: beige;
+                color: black;
                 position:absolute;
             }
 
@@ -209,7 +210,7 @@
     <body onload="start()">
         <div id="main" style="background-image: url('ΜΠΟΡΝΤΟ.jpg');">
             <div id="head">
-                <h1 style="text-align:center;">Domino</h1>
+                <h1 style="text-align:center; color: black;">Domino</h1>
             </div>
             <div id="board">
                 
@@ -233,11 +234,14 @@
                         </form>
 						<br/>
                         <button id="draw_tile" onclick="draw_api()">Draw Tile</button><br/><br/>
-                        <form action="php/logout.php" method="post" style="text-align:left">
-                            <label for="logout"><button>Logout</button></label><br/>
+                        <form action="index.html" method="post" style="text-align:left">
+                            <label for="logout"><button>Logout</button></label> <br/><br/>
                             <input type="submit" name="logout" style="display:none; left:70%;">
                         </form>
-                        
+                        <form action="instruction.html" method="post" style="text-align:left">
+                            <label for="instruction"><button>instruction</button></label>
+                            <input type="submit" name="instruction" style="display:none; left:70%;">
+                        </form>
 
                         
                     </div>
