@@ -1,13 +1,11 @@
 <?php
 
-//include 'libraries.php';
-
     function insertTableFromState($JSONstate,$gameID){ 
         if(!isset($connected)||$connected == false){
             require "connection_with_db.php";
         }
                
-        $query = "INSERT INTO state (gameID,currentState) VALUES ('$gameID','$JSONstate')";
+        $query = "INSERT INTO state (gameID,curState) VALUES ('$gameID','$JSONstate')";
         mysqli_query ($dbcon, $query);  
     
     }
@@ -22,12 +20,11 @@
     
     }
 
-
     function updateTableFromState($JSONstate,$gameID){
         if(!isset($connected)||$connected == false){
             require "connection_with_db.php";
         }
-        $query = "UPDATE state SET currentState = '$JSONstate' WHERE gameID = '$gameID' ";
+        $query = "UPDATE state SET curState = '$JSONstate' WHERE gameID = '$gameID' ";
         mysqli_query ($dbcon, $query);  
     }
 
@@ -36,11 +33,10 @@
         if(!isset($connected)||$connected == false){
             require "connection_with_db.php";
         }
-        $query = "SELECT currentState FROM state WHERE (gameID = '$gameID') ";
+        $query = "SELECT curState FROM state WHERE (gameID = '$gameID') ";
         $result =  mysqli_query ($dbcon, $query);;
         $array = ($result->fetch_assoc());
-        return $array["currentState"];
+        return $array["curState"];
     }
 
-    
 ?>

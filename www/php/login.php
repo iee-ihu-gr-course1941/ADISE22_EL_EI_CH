@@ -1,59 +1,26 @@
-<?php
+<?php 
 
-/**
- * In this page the user gets authenticated by the system.
- */
-if (!isset($connected) || $connected == false) {
-    require "connection_with_db.php";
+session_start();
+
+include("connection_with_db.php");
+$Error = "";
+
+
+if($_SERVER['REQUEST_METHOD'] == "POST")
+{
+	
+	$username = $_POST['username'];
+	$password =  $_POST['password'];
+	if(!empty($username) && !empty($password) && !is_numeric($username))
+	{
+
+					header("Location: https://users.it.teithe.gr/~it185421/adise22/ADISE22_EL_EI_CH/www/html/api.html");
+					exit();
+		
+	}else
+	{
+		$Error = "username or password cannot be empty!";
+	}
 }
-//$connected = true;
-if ($connected) {
-    if (!isset($post_username)) {
-        $post_username = htmlspecialchars($_POST['uname']);
-    }
-    if (!isset($post_password)) {
-        $post_password = htmlspecialchars($_POST['pass']);
-    }
-
-    $query = "SELECT username FROM players WHERE BINARY(username) = '$post_username' AND BINARY(password) = '$post_password'";
-
-    $login_check = $dbcon->query($query);
-    if ($login_check == true) {
-        $login_numrows = $login_check->num_rows;
-    } else {
-        echo $dbcon->error();
-    }
-
-    if (session_status() !== PHP_SESSION_ACTIVE) {
-        session_start();
-    }
-    if ($login_numrows == 1) {
-        $login_row = $login_check->fetch_assoc();
-
-        //id should not be empty
-        if (!empty($login_row)) {
-            $_SESSION['status'] = 1;
-            $_SESSION['user'] = $login_row['username'];
-            $_SESSION['player1'] = $login_row['username'];
-            $_SESSION['loginMessage'] = 'HELLO! ' . $post_username . = ' Καλως ηρθατε στο παιχνίδι!';
-            //adds user to the list of active players
-            $_SESSION['player1'] = $login_row['username'];
-            $query = "INSERT INTO Active_players (username) VALUES ('$login_row[username]')";
-            $dbcon->query($query);
-        }
-    } elseif ($login_numrows == 0) {
-        $_SESSION['status'] = 0;
-        $_SESSION['loginMessage'] = 'Δεν βρέθηκε χρήστης';
-        $_SESSION['user'] = -1;
-    } else {
-        $_SESSION['status'] = 2;
-        $_SESSION['loginMessage'] = 'Πρόβλημα σύνδεσης';
-        $_SESSION['user'] = -1;
-    }
-    session_write_close();
-
-    header('Location:start.php');
-    //print_r($login_row);
-}
-exit;
+		
 ?>

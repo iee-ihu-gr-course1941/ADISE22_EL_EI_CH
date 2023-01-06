@@ -155,16 +155,6 @@
         return $state;
     }
 
-    /*remove the given domino from player
-    function removeDominoFromPlayer($state, $domino) {
-        $oldHand = getCurrentPlayerHand($state);
-        $newHand = array_filter($oldHand,  function($oldHand) use($domino){
-            $tempFront = $oldHand["front"];
-            $tempBack = $oldHand["back"];
-            return $oldHand["front"] != $domino["front"] && $oldHand["back"] != $domino["back"];
-        });
-        return setCurrentPlayerHand($state,$newHand); 
-    }*/
 	
 	function unsetDominoFromHand($state,$domino){
         $oldHand = getCurrentPlayerHand($state);
@@ -182,18 +172,10 @@
         isItOver($state);
         return nextTurn($state);
     }   
-   /* 
-    function printBoard($state){
-        var_dump($state["board"]);
-    }
-    function printCurrentPlayerHand($state){
-        $playerIndex = $state["current-player"];
-        var_dump($state["players"][$playerIndex]["hand"]);
-    }
-    */
+  
 
     function nextTurn($state) {
-        $state["current-player"] ^= 1; //basically it functions as an XNOR gate 0-0=1 // 1-1=0
+        $state["current-player"] ^= 1; 
         return $state;
     }
     
@@ -262,7 +244,7 @@
                 return $num1;
             }
         }
-        //echo"there was an error try again";
+       
         return -1;
     }
 
@@ -276,7 +258,7 @@
 
     //function that checks when the game is over
     function isItOver($state){
-        //$hand = getCurrentPlayerHand($state);
+        
 		$player1Hand =  $state["players"][0]["hand"];
         $player2Hand =  $state["players"][1]["hand"];
         $pile = $state["pile"];
@@ -445,29 +427,4 @@
     }
 
 
-/*
-    function pileToJSON($state){
-        $pile = $state["pile"];
-        $jsonPile = json_encode($pile);
-        return $jsonPile;
-    }
-    
-    function jsonToPile($jsonPile){
-        $newPile = json_decode($jsonPile, true);
-        $state["pile"] = $newPile;
-        return $state;
-    }
-    function handToJSON($state, $playerOffset){
-        $hand = $state["players"][$playerOffset]["hand"];
-        $jsonHand = json_encode($hand);
-        return $jsonHand;
-    }
-    
-    function jsonTohand($jsonHand, $playerOffset){
-        $newHand = json_decode($jsonHand, true);
-        $state["players"][$playerOffset]["hand"] = $newHand;
-        return $state;
-    }
- */
- 
 ?>

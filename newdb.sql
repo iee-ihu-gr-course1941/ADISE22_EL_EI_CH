@@ -88,6 +88,7 @@ CREATE TABLE IF NOT EXISTS `players` (
   `id` int(100) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
+  `token` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uname` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=185446 DEFAULT CHARSET=utf8;

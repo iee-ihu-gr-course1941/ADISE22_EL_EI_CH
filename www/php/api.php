@@ -18,7 +18,7 @@ if (empty($_SESSION['gameID'])) {
         $game_numrows = $game_check->num_rows;
         if ($game_numrows == 1) {
             $game_row = $game_check->fetch_assoc();
-            //id should not be empty
+            
             if (!empty($game_row)) {
                 $_SESSION['gameID'] = $game_row['gameID'];
             }
@@ -31,7 +31,7 @@ if (empty($_SESSION['gameID'])) {
 $JSONstate = selectState($_SESSION['gameID']);
 $state = jsonToState($JSONstate);
 
-//$_SESSION['current_P'] = $state['current-player'];
+
 $_SESSION['current_P'] = getActivePlayer($_SESSION['gameID']);
 $player = getCurrentPlayerId($state);
 
@@ -43,7 +43,7 @@ if ($_SESSION['current_P'] != $player){
 $json_output = array();
  
 if (isItOver($state)) {
-		//status 3 for end game.
+		
 		$json_output['goto_url'] = 'php/end.php';
 }
 $json_output['end'] = $state["end"];
@@ -52,7 +52,7 @@ if (isset($button)) {
    
     if ($button== "start") {
         $json_output['board'] = getBoardToJSON($state);
-        //$json_output['hand'] = getPlayerHandToJSON($state, $_SESSION['player1']);
+       
         $json_output['hand'] = getPlayerHandToJSON($state, $_SESSION['current_P']);
 		$json_output['cp'] = $player ;
     } else if ($button == "play") {
@@ -60,15 +60,15 @@ if (isset($button)) {
         $json_output['board'] = getBoardToJSON($state);
         $json_output['hand'] = getPlayerHandToJSON($state, $_SESSION['current_P']);
 		$json_output['cp'] = $player ;
-        //$json_output['hand'] = getPlayerHandToJSON($state, $_SESSION['player1']);
+       
     } else if ($button == "flip") {
         $state = flipDominoInMyHand($state, $_GET['front'], $_GET['back']);
         $json_output['hand'] = getPlayerHandToJSON($state, $_SESSION['current_P']);
 		$json_output['cp'] = $player ;
-        //$json_output['hand'] = getPlayerHandToJSON($state, $_SESSION['player1']);
+        
     } else if ($button == "draw") {
         $state = takeFromPile($state);
-        //$json_output['hand'] = getPlayerHandToJSON($state, $_SESSION['player1']);
+        
         $json_output['hand'] = getPlayerHandToJSON($state, $_SESSION['current_P']);
 		$json_output['cp'] = $player ;
     }

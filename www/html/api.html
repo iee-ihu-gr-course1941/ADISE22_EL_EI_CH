@@ -42,9 +42,8 @@
             }
 
         </style>
+
         <script type="text/javascript">
-		 //var xhttp = new XMLHttpRequest();
-		 //xhttp.open("GET", "php/api.php?&button=start", true);
             function api() {
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function () {
@@ -58,7 +57,7 @@
 							console.log(json_response.goto_url);
 							document.getElementById("errorMessage").innerText ="Current Player: " + json_response.cp;
 							if (json_response.goto_url !== undefined && json_response.goto_url !== null) {
-								//console.log(this.responseText);
+								
 								window.location = json_response.goto_url;
 							}
                         }else {
@@ -67,8 +66,7 @@
                     }
                 };
                 xhttp.open("GET", "php/api.php?&button=start", true);
-                xhttp.send();
-				
+                xhttp.send();	
             }
 			
 			function start() {
@@ -123,7 +121,7 @@
                                 }
                             }
                         };
-                        //xhttp.open("GET", "play_api.php?mytile="+selected_tile.value, true);
+                        
                         xhttp.open("GET", "php/api.php?front=" + selected_front.value + "&back=" + selected_back.value + "&button=flip", true);
                         xhttp.send();
                     }
@@ -150,11 +148,11 @@
 									display_board(json_response.board);
 									display_hand(json_response.hand);
 									document.getElementById("errorMessage").innerText ="Current Player: " +  json_response.cp;
-                                    //To response einai to echo apo thn php.
+                                   
 									console.log(json_response.end);
 									console.log(json_response.goto_url);
 									if (json_response.goto_url !== undefined && json_response.goto_url !== null) {
-										//console.log(this.responseText);
+										
 										window.location = json_response.goto_url;
 									}
                                 }
@@ -163,7 +161,6 @@
                                 }
                             }
                         };
-                        //xhttp.open("GET", "play_api.php?mytile="+selected_tile.value, true);
                         xhttp.open("GET", "php/api.php?front=" + selected_front.value + "&back=" + selected_back.value + "&button=play", true);
                         xhttp.send();
                     }
@@ -175,10 +172,10 @@
                 if (board_items !== undefined && board_items !== null) {
                     var myboard = document.getElementById("board_list");
                     myboard.innerHTML = '';
-                    //console.log(board_items);
+                    
                     var board_i = 0;
                     var board_max = board_items.length;
-                    //console.log(board_items[board_i].back+board_items[board_i].front);
+                    
                     for (board_i; board_i < board_max; board_i++) {
                         myboard.innerHTML += '<span class="tile_item">'
 											+'<span class="tile_front">'+board_items[board_i].front+'</span>'
@@ -191,17 +188,17 @@
                 if (hand_items !== undefined && hand_items !== null) {
                     var myhand = document.getElementById("players_hand");
                     myhand.innerHTML = '';
-                    //console.log(hand_items);
+                    
                     var hand_i = 0;
                     var hand_max = hand_items.length;
-                    //console.log(hand_items[hand_i].back+hand_items[hand_i].front);
+                    
                     for (hand_i; hand_i < hand_max; hand_i++) {
                         myhand.innerHTML += '<span class="tile_item">'
 											+'<span class="tile_front">'+hand_items[hand_i].front+'</span>'
                                             +'<span class="tile_back">'+hand_items[hand_i].back+'</span>'
                                             +'</span>';
                     }
-                    //hand.innerHtml = hand_items;
+                    
                 }
             }
         </script>

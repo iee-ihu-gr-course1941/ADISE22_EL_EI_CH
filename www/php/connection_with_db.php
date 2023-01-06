@@ -1,22 +1,20 @@
 <?php
-	$host = 'localhost';
-	$user = 'it185421@users.it.teithe.gr';
-        //$user = 'user';
-	$pass = '';
-	$database = 'domino';
-	$port = '22';                                                                         //3306
-	
-	$dbcon = new mysqli($host,$user,$pass,$database,$port);
-	$connected = false;
-	if ($dbcon !== false) {
-		//echo "DB connected.";
-		$connected = true;
-	}
-	elseif (!empty($dbcon->error)) {
-		echo $dbcon->errno.' '.$dbcon->error;
-	}
-	else {
-		echo "Database is empty.";
-		exit;
-	}
-	?>
+
+$host='localhost';
+$db = 'domino';
+
+
+$user='it185421';
+$pass='';
+
+
+if(gethostname()=='users.iee.ihu.gr') {
+	$mysqli = new mysqli($host, $user, $pass, $db,null,'/home/student/it/2018/it185421/mysql/run/mysql.sock');
+} else {
+    $mysqli = new mysqli($host, $user, $pass, $db);
+}
+
+if ($mysqli->connect_errno) {
+    echo "Failed to connect to MySQL: (" . 
+    $mysqli->connect_errno . ") " . $mysqli->connect_error;
+}?>
