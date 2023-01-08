@@ -1,41 +1,30 @@
 <?php
 
-    function insertTableFromState($JSONstate,$gameID){ 
-        if(!isset($connected)||$connected == false){
-            require "connection_with_db.php";
+    function insertTableFromState($curstate,$gameID){ 
+        if(!isset($connected)||$connected == false){   // αν η συνεδρια είναι ενεργη και υπάρχει, τοτε:
+            require "connection_with_db.php"; 
         }
                
-        $query = "INSERT INTO state (gameID,curState) VALUES ('$gameID','$JSONstate')";
+        $query = "INSERT INTO state (gameID,curState) VALUES ('$gameID','$curstate')"; //βάζει τις τιμές στην βάση
         mysqli_query ($dbcon, $query);  
     
     }
 
-    function insertTableFromStateWithoutGameID($JSONstate,$player1,$player2){ 
+    function updateTableFromState($curstate,$gameID){  //κάνει update τον πίνακα state με βάση το id του παιχνιδιου
         if(!isset($connected)||$connected == false){
             require "connection_with_db.php";
         }
-
-        $query = "INSERT INTO state (player1, player2, currentState) VALUES ('$player1', '$player2', '$JSONstate')";
-        mysqli_query ($dbcon, $query);
-    
-    }
-
-    function updateTableFromState($JSONstate,$gameID){
-        if(!isset($connected)||$connected == false){
-            require "connection_with_db.php";
-        }
-        $query = "UPDATE state SET curState = '$JSONstate' WHERE gameID = '$gameID' ";
+        $query = "UPDATE state SET curState = '$curstate' WHERE gameID = '$gameID' ";
         mysqli_query ($dbcon, $query);  
     }
 
-    //returns in JSON format
-    function selectState($gameID){
+    function selectState($gameID){  // βρίσκει και επιστρέφει τα δεδομένα 
         if(!isset($connected)||$connected == false){
             require "connection_with_db.php";
         }
         $query = "SELECT curState FROM state WHERE (gameID = '$gameID') ";
         $result =  mysqli_query ($dbcon, $query);;
-        $array = ($result->fetch_assoc());
+        $array = ($result->fetch_assoc()); 
         return $array["curState"];
     }
 

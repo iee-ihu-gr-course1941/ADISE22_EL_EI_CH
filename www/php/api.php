@@ -31,21 +31,8 @@ if (empty($_SESSION['gameID'])) {
 $JSONstate = selectState($_SESSION['gameID']);
 $state = jsonToState($JSONstate);
 
-
-$_SESSION['current_P'] = getActivePlayer($_SESSION['gameID']);
-$player = getCurrentPlayerId($state);
-
-$button = $_GET['button'];
-if ($_SESSION['current_P'] != $player){
-	$button = "start";
-}
-
 $json_output = array();
- 
-if (isItOver($state)) {
-		
-		$json_output['goto_url'] = 'php/end.php';
-}
+
 $json_output['end'] = $state["end"];
 
 if (isset($button)) {
@@ -72,8 +59,6 @@ if (isset($button)) {
         $json_output['hand'] = getPlayerHandToJSON($state, $_SESSION['current_P']);
 		$json_output['cp'] = $player ;
     }
-    $JSONstate = stateToJSON($state);
-    updateTableFromState($JSONstate, $_SESSION['gameID']);
 	
 	echo json_encode($json_output);
 }
