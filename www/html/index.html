@@ -1,42 +1,75 @@
 <!DOCTYPE html>
 <html dir="ltr">
-	<head>
-		<title>Κλασσικό Ντόμινο</title>
-		<link rel="stylesheet" href="css.css"/>
-		<meta charset="UTF-8">
-	</head>
-	<body>
-		<div id="main" style="background-color: gray;">
-			<div id="head">
-				<h1 style="text-align:center; color: white;"> Κλασσικό Ντόμινο</h1>
-			</div>
-			<div id="board">
-				<div id="game">
-					<div id="iner_game">
-					<form action="api.html" method="POST">
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<label for="uname" style="color: white;">Όνομα χρήστη</label> <br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="uname" name="uname" required placeholder="enter username..."><br/><br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <head>
+        <title>Κλασσικό Ντόμινο</title>
+		<link rel="icon" type="image/x-icon" href="../images/fav-icon.png">
+        <link rel="stylesheet" href="css.css"/>
+        <meta charset="UTF-8">
+		<style> 
+			html { 
+			  background: url('../images/Στιγμιότυπο οθόνης 2023-01-09 181725.png') no-repeat center fixed; 
+			  background-size: cover;
+			}
+			
+			body { 
+			  color: white; 
+			}
+			</style>
+    </head>
 
-						<label for="password" style="color: white;">Κωδικός</label><br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="password" name="password" required placeholder="password"><br/><br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-						</a>
-						<label><a href="api.html"><button class="button2">Σύνδεση</button></a></label>
-						<input type="submit" name="login" style="display:none"> <br/><br/>
-						
-					</form>
-						</a>
-						<label><a href="register_user.html"><button class="button3"> Εγγραφή</button></a></label><br/>
-						<input type="submit" name="register" style="display:none">
-						<br/>
-					   
-				</div>
-			</div>
+    <body>
+		<div id="back_image">
+        <div id="main">
+            <div id="head">
+						<div class="col">
+							<h1 style="text-align:center; color: white;"> Κλασσικό Ντόμινο</h1>
+						</div>
+            </div>
+            <div class="container">
+                <div class="row justify-content-md-center">
+                	<div class="col-md-auto">
+                 		<form action="api.html" method="POST" style="margin: 10em 54.2em 0em;">
+                       		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        	<div class="row justify-content-md-center">
+                            	<div class="col-md-auto">
+                                	<label for="uname" style="color: white;">Όνομα χρήστη</label> <br/>
+                            	</div>
+                        	</div>
+                        	<div class="row justify-content-md-center">
+                            	<div class="col-md-auto">
+                               		<input style="border-radius:5em" type="uname" name="uname" required placeholder="enter username..."><br/><br/>
+                            	</div>
+                        	</div>
+                        	<div class="row justify-content-md-center">
+                            	<div class="col-md-auto">
+                               		<label for="password" style="color: white;">Κωδικός</label><br/>
+                            	</div>
+                        	</div>
+                        	<div class="row justify-content-md-center">
+                            	<div class="col-md-auto">
+                                	<input style="border-radius:5em" type="password" name="password" required placeholder="password"><br/><br/>
+                            	</div>
+                        	</div>
+                        	<div class="row justify-content-md-center">
+                            	<div class="col-md-auto" style="text-align: center;">
+                                	<label><a href="api.html"><button class="button2" style="border-radius:5em">Σύνδεση</button></a></label>
+                                	<input type="submit" name="login" style="display:none"> <br/><br/>
+                            	</div>
+                        	</div>
+						</form>
+						<form action="register_user.html" method="POST" style="margin: 0em 54.2em 0em;">
+                        	<div class="row justify-content-md-center">
+                            	<div class="col-md-auto" style="text-align: center;">
+                                	<label><a href="register_user.html"><button class="button3" style="border-radius:5em"> Εγγραφή</button></a></label><br/>
+                                	<input type="submit" name="register" style="display:none">
+                            	</div>
+                        	</div>
+                        	<br/>
+                    	</form>
+                	</div>
+                </div>
+            </div>
+        </div>
 		</div>
-	</body>
+    </body>
 </html>

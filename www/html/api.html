@@ -2,6 +2,7 @@
 <html dir="ltr">
     <head>
         <title>Domino</title>
+        <link rel="icon" type="image/x-icon" href="../images/fav-icon.png">
         <link rel="stylesheet" href="css.css"/>
         <meta charset="UTF-8">
         <style>
@@ -13,13 +14,13 @@
                 width:100%;
                 height:65%;       
                 text-align:center;
-                border-color:gray;
+                border-color:black;
                 border-style:solid;
                 border-width:6px;
                 position:absolute;
-                background-image:url('../images/ΜΠΟΡΝΤΟ.jpg')
-
-
+                background-image:url('../images/board71.jpg');
+                
+                
             }
             #iner_hand{
                 top:65.5%;
@@ -27,20 +28,20 @@
                 width:100%;
                 height:25%;
                 text-align:center;
-                border-color:gray;
+                border-color:black;
                 border-style:solid;
                 border-width:6px;
                 position:absolute;
-                background-image:url('../images/316086509_621969573014824_7393312469914654232_n.jpg')
+                background-image:url('../images/xeri4.png')
             }
             #iner_form{
                 top:94%;
-                left:2%;
-                width:96%;
+                left:43.2%;
+                width:100%;
                 color: black;
                 position:absolute;
-            }
-
+           
+            } 
         </style>
 
         <script type="text/javascript">
@@ -205,14 +206,9 @@
        
     </head>
     <body onload="start()">
-        <div id="main" style="background-image: url('ΜΠΟΡΝΤΟ.jpg');">
-            <div id="head">
-                <h1 style="text-align:center; color: black;">Domino</h1>
-            </div>
-            <div id="board">
-                
+        <div id="main">
+            <div id="board" >
                 <div id="game">
-                   
                     <div id="iner_api">
                         <span id="board_list"></span>
                     </div>
@@ -221,16 +217,12 @@
                     </div>
                     <div id="iner_form">
                         <form onsubmit="play_api()" method="post">
-                            <label for="selected_front">Front (Left):</label>
-                            <input type="text" name="selected_front" id="selected_front" placeholder="enter a number"><br/><br/>
-                            <label for="selected_back">Back (Right):</label>
-                            <input type="text" name="selected_back" id="selected_back" placeholder="enter a number"><br/><br/>
                             <label for="play_tile"><button>Play Tile</button></label>
                             <input type="submit" name="play_tile" style="display:none">
-                            <button id="flip_tile" onclick="flip_api()">Flip Tile</button>
+                            <button id="flip_tile"  onclick="flip_api()">Flip Tile</button>
+                            <button id="draw_tile"  onclick="draw_api()">Draw Tile</button><br/><br/>
                         </form>
-						<br/>
-                        <button id="draw_tile" onclick="draw_api()">Draw Tile</button><br/><br/>
+						
                         <form action="index.html" method="post" style="text-align:left">
                             <label for="logout"><button>Logout</button></label> <br/><br/>
                             <input type="submit" name="logout" style="display:none; left:70%;">
